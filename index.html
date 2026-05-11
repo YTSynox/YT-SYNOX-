@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>synox | Bio</title>
+    <title>SYNOX | Bio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <div id="enter-screen" onclick="startPage()">
-        <p class="enter-text">[ GİRMEK İÇİN TIKLA ]</p>
+        <p class="enter-text">[ CLICK TO ENTER ]</p>
     </div>
 
     <div id="volume-control" class="volume-container">
@@ -21,21 +21,18 @@
     </div>
 
     <div class="video-background">
-        <div id="player"></div>
+        <div id="yt-player"></div>
     </div>
 
     <div id="main-content">
         <div class="card-container">
-            <div class="logo-blur"></div>
             <div class="profile-card">
                 <h1 class="main-title">SYNOX</h1>
                 <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
                 <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>
                 
-                <div class="status-box">
-                    <span>TRK HUB</span>
-                    <p>Join https://discord.gg/7abeVaAsUW to display your status</p>
-                </div>
+                <p class="hub-text">TRK HUB</p>
+                <p class="discord-hint">Join https://discord.gg/7abeVaAsUW to display your status</p>
 
                 <div class="social-icons">
                     <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link"><i class="fa-brands fa-youtube"></i></a>
@@ -51,14 +48,17 @@
         let isMuted = false;
 
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                videoId: 'MJXHVdWzPks', // Undertale Last Breath
+            player = new YT.Player('yt-player', {
+                videoId: 'MJXHVdWzPks', // Undertale Last Breath Videosu
                 playerVars: {
                     'autoplay': 1,
                     'controls': 0,
                     'loop': 1,
                     'playlist': 'MJXHVdWzPks',
-                    'mute': 0
+                    'mute': 0,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'modestbranding': 1
                 },
                 events: {
                     'onReady': onPlayerReady
@@ -77,7 +77,6 @@
             player.playVideo();
         }
 
-        // Ses Açma/Kapama Fonksiyonu
         document.getElementById('volume-control').onclick = function() {
             if (isMuted) {
                 player.unMute();

@@ -1,139 +1,93 @@
 body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background-color: #000;
-    color: white;
-    font-family: 'Arial', sans-serif;
+    margin: 0; padding: 0; height: 100%;
+    background-color: #000; color: white;
+    font-family: 'Arial', sans-serif; overflow: hidden;
+}
+
+/* Video Arka Planı */
+.video-background {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2; pointer-events: none;
     overflow: hidden;
+}
+
+#player {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100vw; height: 56.25vw; /* 16:9 oran */
+    transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%;
+    filter: brightness(0.3); /* Videoyu karartmak için */
+}
+
+/* Ses Paneli (Görseldeki Tasarım) */
+.volume-container {
+    position: fixed;
+    top: 20px; right: 20px;
+    background: linear-gradient(to right, #001a4d, #003399);
+    padding: 10px 20px;
+    border-radius: 15px;
+    display: none; /* Giriş yapana kadar gizli */
+    align-items: center;
+    gap: 15px;
+    border: 2px solid #0055ff;
+    cursor: pointer;
+    z-index: 99;
+}
+
+#volume-icon { color: #ff0000; font-size: 20px; }
+
+.volume-bar-bg {
+    width: 120px; height: 12px;
+    background: #000; border-radius: 10px;
+    overflow: hidden;
+}
+
+.volume-bar-red {
+    width: 100%; height: 100%;
+    background: #ff0000;
+    transition: width 0.3s;
 }
 
 /* Giriş Ekranı */
 #enter-screen {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+    background: #000; z-index: 100;
+    display: flex; justify-content: center; align-items: center;
     cursor: pointer;
 }
 
 .enter-text {
-    font-size: 20px;
-    letter-spacing: 5px;
-    animation: pulse 2s infinite;
+    font-size: 18px; letter-spacing: 5px; color: #ff0000;
+    text-shadow: 0 0 10px #ff0000; animation: pulse 1.5s infinite;
 }
 
 #main-content {
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    opacity: 0; transition: opacity 2s;
+    display: flex; justify-content: center; align-items: center; height: 100vh;
 }
 
-/* Arka Plan Siyah */
-.black-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #000;
-    z-index: -2;
-}
-
-/* Orta Panel ve Bulanık Logo */
-.card-container {
-    position: relative;
-    width: 450px;
-    padding: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-blur {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* Buraya gönderdiğin logonun linkini koymalısın */
-    background: url('https://files.catbox.moe/978w1l.png') no-repeat center;
-    background-size: contain;
-    filter: blur(30px) brightness(0.4);
-    z-index: -1;
-}
-
+/* Kart Tasarımı */
 .profile-card {
-    background: rgba(0, 40, 80, 0.4);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    width: 100%;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 20px; padding: 40px;
+    text-align: center; border: 1px solid #ff000033;
 }
 
-/* Yazı Stilleri */
-.main-title {
-    font-size: 48px;
-    color: #ff0000;
-    text-shadow: 0 0 15px #ff0000;
-    margin: 0;
-}
-
-.subtitle {
-    color: #ff0000;
-    font-weight: bold;
-    font-size: 14px;
-    margin: 15px 0;
-    line-height: 1.4;
-}
-
-.location {
-    color: #ff0000;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-/* Discord Kutusu */
-.status-box {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 15px;
-    border-radius: 15px;
-    margin: 20px 0;
-}
-
-.status-box i { color: #ff0000; font-size: 24px; }
-.status-box span { display: block; color: #ff0000; font-weight: bold; margin: 5px 0; }
-.status-box p { font-size: 10px; color: #555; margin: 0; }
-
-/* İkonlar */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.icon-link {
-    color: white;
-    font-size: 35px;
-    transition: 0.3s;
-}
-
-.icon-link:hover { transform: scale(1.2); }
-
-.views {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    color: #ff0000;
-    font-size: 14px;
-}
+.main-title { font-size: 50px; color: #ff0000; text-shadow: 0 0 15px #ff0000; margin: 0; }
+.subtitle { color: #ff0000; font-weight: bold; margin: 15px 0; }
+.status-box { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 10px; margin: 20px 0; }
+.status-box i { color: #ff0000; font-size: 20px; }
+.status-box span { display: block; color: #ff0000; font-weight: bold; }
+.status-box p { font-size: 10px; color: #555; }
+.social-icons { display: flex; justify-content: center; gap: 20px; }
+.icon-link { color: white; font-size: 35px; }
 
 @keyframes pulse {
-    0% { opacity: 0.3; }
+    0% { opacity: 0.5; }
     50% { opacity: 1; }
-    100% { opacity: 0.3; }
+    100% { opacity: 0.5; }
 }

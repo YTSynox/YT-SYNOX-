@@ -25,14 +25,14 @@
 
     <div class="video-background">
         <iframe id="yt-player" 
-            src="https://www.youtube.com/embed/MJXHVdWzPks?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=MJXHVdWzPks&showinfo=0&rel=0" 
-            frameborder="0" allow="autoplay">
+            src="https://www.youtube.com/embed/MJXHVdWzPks?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=MJXHVdWzPks&showinfo=0&rel=0&modestbranding=1&autohide=1" 
+            frameborder="0" allow="autoplay; encrypted-media">
         </iframe>
     </div>
 
     <div id="main-content">
         <div class="profile-card">
-            <img src="favicon.png" alt="SYNOX Logo" class="profile-logo">
+            <img src="favicon.png" alt="SYNOX Logo" class="profile-cover-logo">
 
             <h1 class="main-title">SYNOX</h1>
             <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
@@ -58,9 +58,11 @@
         function startPage() {
             document.getElementById('enter-screen').style.display = 'none';
             document.getElementById('main-content').style.opacity = '1';
+            // Ses kontrolünü video açıldıktan sonra göster
             document.getElementById('volume-control').style.display = 'flex';
             if (player) {
                 player.unMute();
+                player.setVolume(50); // Başlangıç sesi %50
                 player.playVideo();
             }
         }

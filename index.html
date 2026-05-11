@@ -10,58 +10,88 @@
 <body>
 
     <div id="enter-screen" onclick="startPage()">
-        <p class="enter-text">[ CLICK TO ENTER ]</p>
+        <p class="enter-text">[ GİRMEK İÇİN TIKLA ]</p>
     </div>
 
-    <audio id="bg-music" loop>
-        <source src="https://files.catbox.moe/978w1l.mp3" type="audio/mpeg">
-    </audio>
+    <div id="volume-control" class="volume-container">
+        <i id="volume-icon" class="fa-solid fa-volume-high"></i>
+        <div class="volume-bar-bg">
+            <div id="volume-bar" class="volume-bar-red"></div>
+        </div>
+    </div>
+
+    <div class="video-background">
+        <div id="player"></div>
+    </div>
 
     <div id="main-content">
-        <div class="black-bg"></div>
-        
         <div class="card-container">
             <div class="logo-blur"></div>
-            
             <div class="profile-card">
-                <h1 class="main-title">synox</h1>
-                
+                <h1 class="main-title">SYNOX</h1>
                 <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
-
-                <div class="location">
-                    <i class="fa-solid fa-location-dot"></i> Turkey
-                </div>
-
+                <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>
+                
                 <div class="status-box">
                     <i class="fa-solid fa-circle-xmark"></i>
-                    <span>User Not found</span>
-                    <p>Join discord.gg/guns to display your status</p>
+                    <span>TRK HUB</span>
+                    <p>Join https://discord.gg/7abeVaAsUW to display your status</p>
                 </div>
 
                 <div class="social-icons">
-                    <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                    <a href="https://discord.gg/7abeVaAsUW" target="_blank" class="icon-link">
-                        <i class="fa-brands fa-discord"></i>
-                    </a>
+                    <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://discord.gg/7abeVaAsUW" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
                 </div>
             </div>
         </div>
-
-        <div class="views">
-            <i class="fa-solid fa-eye"></i> 147
-        </div>
+        <div class="views"><i class="fa-solid fa-eye"></i> 147</div>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+        let player;
+        let isMuted = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                videoId: 'MJXHVdWzPks', // Undertale Last Breath
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'MJXHVdWzPks',
+                    'mute': 0
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.setVolume(50);
+        }
+
         function startPage() {
             document.getElementById('enter-screen').style.display = 'none';
             document.getElementById('main-content').style.opacity = '1';
-            var audio = document.getElementById('bg-music');
-            audio.volume = 0.4; // Sesi %40 seviyesine çektim
-            audio.play();
+            document.getElementById('volume-control').style.display = 'flex';
+            player.playVideo();
         }
+
+        // Ses Açma/Kapama Fonksiyonu
+        document.getElementById('volume-control').onclick = function() {
+            if (isMuted) {
+                player.unMute();
+                document.getElementById('volume-icon').className = "fa-solid fa-volume-high";
+                document.getElementById('volume-bar').style.width = "100%";
+            } else {
+                player.mute();
+                document.getElementById('volume-icon').className = "fa-solid fa-volume-xmark";
+                document.getElementById('volume-bar').style.width = "0%";
+            }
+            isMuted = !isMuted;
+        };
     </script>
 </body>
 </html>

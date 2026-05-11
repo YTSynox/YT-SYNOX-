@@ -1,0 +1,89 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #001a33;
+    color: white;
+    overflow: hidden;
+}
+
+/* Arka Plan Mavi Gradient */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #003366 0%, #000a1a 100%);
+    z-index: -1;
+}
+
+.content {
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Kırmızı Parlama Efekti */
+.main-title {
+    font-size: 64px;
+    color: #ff0000;
+    text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #ff0000;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.location {
+    color: #ff0000;
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+/* İkonlar */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.icon-link {
+    color: white;
+    font-size: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+.icon-link:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+}
+
+/* Göz İşareti */
+.views {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: #ff0000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

@@ -9,24 +9,46 @@
 </head>
 <body>
 
-    <div class="background"></div>
+    <div id="enter-screen" onclick="startPage()">
+        <p class="enter-text">[ GİRİŞ YAP ]</p>
+    </div>
 
-    <div class="content">
-        <h1 class="main-title">SYNOX</h1>
+    <audio id="bg-music" loop>
+        <source src="https://files.catbox.moe/kivmsc.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="main-content">
+        <div class="black-bg"></div>
         
-        <p class="subtitle">BEDAVA SCRIPTLER, ÇEKİLİŞLER İÇİN KATIL!</p>
+        <div class="card-container">
+            <div class="logo-blur"></div>
+            
+            <div class="profile-card">
+                <h1 class="main-title">synox</h1>
+                
+                <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
 
-        <div class="location">
-            <i class="fa-solid fa-location-dot"></i> Turkey
-        </div>
+                <div class="location">
+                    <i class="fa-solid fa-location-dot"></i> Turkey
+                </div>
 
-        <div class="social-icons">
-            <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link">
-                <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="https://discord.gg/7abeVaAsUW" target="_blank" class="icon-link">
-                <i class="fa-brands fa-discord"></i>
-            </a>
+                <div class="discord-status">
+                    <div class="status-box">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <span>User Not found</span>
+                        <p>Join discord.gg/guns to display your status</p>
+                    </div>
+                </div>
+
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://discord.gg/7abeVaAsUW" target="_blank" class="icon-link">
+                        <i class="fa-brands fa-discord"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="views">
@@ -34,5 +56,14 @@
         </div>
     </div>
 
+    <script>
+        function startPage() {
+            document.getElementById('enter-screen').style.display = 'none';
+            document.getElementById('main-content').style.opacity = '1';
+            var audio = document.getElementById('bg-music');
+            audio.volume = 0.5;
+            audio.play();
+        }
+    </script>
 </body>
 </html>

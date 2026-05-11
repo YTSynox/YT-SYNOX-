@@ -21,45 +21,38 @@
     </div>
 
     <div class="video-background">
-        <div id="yt-player"></div>
+        <iframe id="yt-player" 
+            src="https://www.youtube.com/embed/MJXHVdWzPks?autoplay=1&mute=1&controls=0&loop=1&playlist=MJXHVdWzPks&showinfo=0&rel=0&enablejsapi=1" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media">
+        </iframe>
     </div>
 
     <div id="main-content">
-        <div class="card-container">
-            <div class="profile-card">
-                <h1 class="main-title">SYNOX</h1>
-                <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
-                <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>
-                
-                <p class="hub-text">TRK HUB</p>
-                <p class="discord-hint">Join https://discord.gg/7abeVaAsUW to display your status</p>
+        <div class="profile-card">
+            <h1 class="main-title">SYNOX</h1>
+            <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
+            <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>
+            
+            <p class="hub-text">TRK HUB</p>
+            <p class="discord-hint">Join https://discord.gg/7abeVaAsUW to display your status</p>
 
-                <div class="social-icons">
-                    <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://discord.gg/7abeVaAsUW" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
-                </div>
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@YtSynox" target="_blank" class="icon-link"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://discord.gg/7abeVaAsUW" target="_blank" class="icon-link"><i class="fa-brands fa-discord"></i></a>
             </div>
         </div>
     </div>
 
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        let player;
-        let isMuted = false;
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+        let player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('yt-player', {
-                videoId: 'MJXHVdWzPks', // Undertale Last Breath Videosu
-                playerVars: {
-                    'autoplay': 1,
-                    'controls': 0,
-                    'loop': 1,
-                    'playlist': 'MJXHVdWzPks',
-                    'mute': 0,
-                    'showinfo': 0,
-                    'rel': 0,
-                    'modestbranding': 1
-                },
                 events: {
                     'onReady': onPlayerReady
                 }
@@ -67,16 +60,21 @@
         }
 
         function onPlayerReady(event) {
-            event.target.setVolume(50);
+            // Video hazır
         }
 
         function startPage() {
             document.getElementById('enter-screen').style.display = 'none';
             document.getElementById('main-content').style.opacity = '1';
             document.getElementById('volume-control').style.display = 'flex';
-            player.playVideo();
+            if (player) {
+                player.unMute();
+                player.setVolume(50);
+                player.playVideo();
+            }
         }
 
+        let isMuted = false;
         document.getElementById('volume-control').onclick = function() {
             if (isMuted) {
                 player.unMute();

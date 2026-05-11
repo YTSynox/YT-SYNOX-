@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>synox | Profile</title>
+    <title>synox | Bio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <div id="enter-screen" onclick="startPage()">
-        <p class="enter-text">[ GİRİŞ YAP ]</p>
+        <p class="enter-text">[ CLICK TO ENTER ]</p>
     </div>
 
     <audio id="bg-music" loop>
-        <source src="https://files.catbox.moe/kivmsc.mp3" type="audio/mpeg">
+        <source src="https://files.catbox.moe/978w1l.mp3" type="audio/mpeg">
     </audio>
 
     <div id="main-content">
@@ -32,12 +32,10 @@
                     <i class="fa-solid fa-location-dot"></i> Turkey
                 </div>
 
-                <div class="discord-status">
-                    <div class="status-box">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                        <span>User Not found</span>
-                        <p>Join discord.gg/guns to display your status</p>
-                    </div>
+                <div class="status-box">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    <span>User Not found</span>
+                    <p>Join discord.gg/guns to display your status</p>
                 </div>
 
                 <div class="social-icons">
@@ -61,7 +59,7 @@
             document.getElementById('enter-screen').style.display = 'none';
             document.getElementById('main-content').style.opacity = '1';
             var audio = document.getElementById('bg-music');
-            audio.volume = 0.5;
+            audio.volume = 0.4; // Sesi %40 seviyesine çektim
             audio.play();
         }
     </script>

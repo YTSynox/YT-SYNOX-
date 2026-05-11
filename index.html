@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYNOX | Bio</title>
+    
+    <title>SYNOX</title>
+    <meta name="apple-mobile-web-app-title" content="SYNOX">
+    <meta name="application-name" content="SYNOX">
+
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="apple-touch-icon" href="logo.jpg">
+
+    <meta property="og:title" content="SYNOX">
+    <meta property="og:image" content="logo.jpg">
+    <meta name="description" content="SYNOX | BEDAVA SCRIPTLER IÇIN KATIL!">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Profil resmi ve kart stili */
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid #1a56ff; /* Logondaki maviye uygun renk */
+            margin-bottom: 15px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(26, 86, 255, 0.4);
+        }
+        
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,7 +42,7 @@
         <p class="enter-text">[ CLICK TO ENTER ]</p>
     </div>
 
-    <div id="volume-control" class="volume-container">
+    <div id="volume-control" class="volume-container" style="display: none;">
         <i id="volume-icon" class="fa-solid fa-volume-high"></i>
         <div class="volume-bar-bg">
             <div id="volume-bar" class="volume-bar-red"></div>
@@ -30,6 +59,8 @@
 
     <div id="main-content">
         <div class="profile-card">
+            <img src="logo.jpg" alt="SYNOX" class="profile-img">
+            
             <h1 class="main-title">SYNOX</h1>
             <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
             <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>

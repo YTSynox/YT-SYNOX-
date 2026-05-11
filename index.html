@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYNOX | Bio</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -22,14 +25,15 @@
 
     <div class="video-background">
         <iframe id="yt-player" 
-            src="https://www.youtube.com/embed/MJXHVdWzPks?autoplay=1&mute=1&controls=0&loop=1&playlist=MJXHVdWzPks&showinfo=0&rel=0&enablejsapi=1" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media">
+            src="https://www.youtube.com/embed/MJXHVdWzPks?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=MJXHVdWzPks&showinfo=0&rel=0" 
+            frameborder="0" allow="autoplay">
         </iframe>
     </div>
 
     <div id="main-content">
         <div class="profile-card">
+            <img src="favicon.png" alt="SYNOX Logo" class="profile-logo">
+
             <h1 class="main-title">SYNOX</h1>
             <p class="subtitle">BEDAVA SCRIPTLER ICIN KATIL!</p>
             <div class="location"><i class="fa-solid fa-location-dot"></i> Turkey</div>
@@ -44,23 +48,11 @@
         </div>
     </div>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
         let player;
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('yt-player', {
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            // Video hazır
+            player = new YT.Player('yt-player');
         }
 
         function startPage() {
@@ -69,7 +61,6 @@
             document.getElementById('volume-control').style.display = 'flex';
             if (player) {
                 player.unMute();
-                player.setVolume(50);
                 player.playVideo();
             }
         }

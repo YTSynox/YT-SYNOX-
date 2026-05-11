@@ -12,39 +12,51 @@ body, html {
 }
 
 #yt-player {
-    width: 100vw; height: 56.25vw;
+    width: 100vw; height: 56.25vw; /* 16:9 oran */
     min-height: 100vh; min-width: 177.77vh;
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    filter: brightness(0.3); /* Videoyu biraz karartır ki yazılar okunsun */
+    filter: brightness(0.3); /* Videoyu karartır, yazıları belirginleştirir */
 }
 
-/* PROFİL LOGOSU (ORTADAKİ RESİM) */
-.profile-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #ff0000;
-    margin-bottom: 15px;
-    box-shadow: 0 0 15px #ff0000;
+/* YENİ KAPAK RESMİ LOGOSU (SYNOX BAŞLIĞININ ÜSTÜNDE) */
+.profile-cover-logo {
+    width: 120px; /* Kapak resmi olarak daha büyük */
+    height: 120px;
+    border-radius: 50%; /* Yuvarlak hatlar */
+    border: 3px solid #ff0000; /* Kırmızı çerçeve */
+    margin-bottom: 20px; /* Başlıkla arasında boşluk */
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; /* Güçlü kırmızı neon parlama */
+    object-fit: contain; /* Logonun bozulmadan sığmasını sağlar */
 }
 
 .profile-card {
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(10px);
-    padding: 30px; border-radius: 20px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    text-align: center; width: 350px;
+    background: rgba(0, 0, 0, 0.75); /* Yarı saydam siyah kart */
+    backdrop-filter: blur(10px); /* Arka planı bulanıklaştırır */
+    padding: 40px; border-radius: 20px;
+    border: 1px solid rgba(255, 0, 0, 0.4); /* Hafif kırmızı çerçeve */
+    text-align: center; width: 380px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
 }
 
-/* DİĞER TASARIMLAR */
-#main-content { opacity: 0; transition: opacity 1.5s; display: flex; justify-content: center; align-items: center; height: 100vh; }
-.main-title { font-size: 40px; color: #ff0000; text-shadow: 0 0 15px #ff0000; margin: 0; }
-.subtitle { color: #ff0000; font-weight: bold; margin: 10px 0; }
-.volume-container { position: fixed; top: 20px; right: 20px; background: linear-gradient(to right, #001a4d, #003399); padding: 10px 15px; border-radius: 10px; display: none; align-items: center; gap: 10px; border: 2px solid #0055ff; z-index: 110; cursor: pointer; }
-.volume-bar-bg { width: 80px; height: 8px; background: #000; border-radius: 5px; overflow: hidden; }
-.volume-bar-red { width: 100%; height: 100%; background: #ff0000; }
+/* DİĞER TASARIMLAR VE METİNLER */
+#main-content { opacity: 0; transition: opacity 1.5s; display: flex; justify-content: center; align-items: center; height: 100vh; position: relative; z-index: 10; }
+.main-title { font-size: 48px; color: #ff0000; text-shadow: 0 0 15px #ff0000; margin: 0; font-weight: bold; }
+.subtitle { color: #ff0000; font-weight: bold; font-size: 16px; margin: 15px 0; }
+.location { color: #ccc; font-size: 14px; margin-bottom: 25px; }
+.hub-text { color: #ff0000; font-weight: bold; margin-bottom: 5px; }
+.discord-hint { font-size: 10px; color: #555; margin-bottom: 25px; }
+
+/* SES KONTROLÜ TASARIMI */
+.volume-container { position: fixed; top: 25px; right: 25px; background: linear-gradient(to right, #001a4d, #003399); padding: 12px 20px; border-radius: 15px; display: none; align-items: center; gap: 15px; border: 2px solid #0055ff; z-index: 110; cursor: pointer; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+.volume-bar-bg { width: 100px; height: 10px; background: #000; border-radius: 5px; overflow: hidden; }
+.volume-bar-red { width: 100%; height: 100%; background: #ff0000; transition: width 0.3s ease; }
+#volume-icon { color: #ff0000; font-size: 20px; }
+
+/* GİRİŞ EKRANI */
 #enter-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; display: flex; justify-content: center; align-items: center; cursor: pointer; }
-.enter-text { color: #ff0000; letter-spacing: 5px; text-shadow: 0 0 10px #ff0000; }
-.social-icons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
-.icon-link { color: white; font-size: 30px; }
+.enter-text { color: #ff0000; font-size: 20px; letter-spacing: 5px; text-shadow: 0 0 15px #ff0000; }
+
+.social-icons { display: flex; justify-content: center; gap: 30px; margin-top: 25px; }
+.icon-link { color: white; font-size: 35px; transition: 0.3s; }
+.icon-link:hover { transform: scale(1.2); color: #ff0000; }
